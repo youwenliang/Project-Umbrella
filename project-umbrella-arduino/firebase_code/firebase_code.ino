@@ -16,6 +16,6 @@ delay(10);
 void uploadData(){
 Process p;
 int SensorValue = analogRead(A0);
-p.runShellCommand("curl -k -X PATCH https://sizzling-fire-3461.firebaseio.com/Data.json -d '{ \"Data\" : "+ String(SensorValue) +"}'");
+p.runShellCommand("curl -k -X PATCH https://project-umbrella.firebaseio.com/Data.json -d '{ \"Data\" : "+ String(SensorValue) +"}'");
 while(p.running());
 }

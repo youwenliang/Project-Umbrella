@@ -10,6 +10,8 @@ void setup() {
   FreqMeasure.begin();
 }
 
+//Uno Pin 8
+
 double sum=0;
 int count=0;
 

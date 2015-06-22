@@ -17,13 +17,13 @@ void setup() {
 boolean start = false;
 
 void loop(){
-  micValue = analogRead(micPin);
-  Serial.println(micValue);
-  if(micValue < 600){
+  //micValue = analogRead(micPin);
+  //Serial.println(micValue);
+  //if(micValue < 600){
     digitalWrite(ledPin, HIGH);
     p.begin("madplay /mnt/sda1/water1.mp3");
     while(p.running());
-  }
+  //}
 //  while(p.running()){
 //    micValue = analogRead(micPin);
 //    Serial.println(micValue);
