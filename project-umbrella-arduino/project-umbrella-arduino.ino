@@ -49,13 +49,19 @@ void loop(){
     int numV = int((avgMicV - rangeV) / stepV) + 1;
     int numF = int((avgMicF - rangeF) / stepF) + 1;
     
+    if(numV < 1) numV = 1;
+    if(numV > 3) numV = 3;
+    if(numF < 1) numF = 1;
+    if(numF > 3) numF = 3;
+    
+    // Implement Play and Stop codes!!!
     p.begin("madplay /mnt/sda1/"+String(numV)+String(numF)+"x.mp3");
-    p.running();
+    p.run();
     
     while(counterMicV > 0){  
       counterMicV--;  
     }
-    //p.stop!;
+    p.close();
     counterPause = 0;
   }
   else {
