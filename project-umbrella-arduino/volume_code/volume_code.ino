@@ -15,14 +15,31 @@ void setup() {
 }
 
 boolean start = false;
+int counter = 0;
+int x = 1;
+int y = 1;
 
 void loop(){
   //micValue = analogRead(micPin);
   //Serial.println(micValue);
   //if(micValue < 600){
-    digitalWrite(ledPin, HIGH);
-    p.begin("madplay /mnt/sda1/water1.mp3");
-    while(p.running());
+    if(!start) {
+      digitalWrite(ledPin, HIGH);
+      p.runShellCommandAsynchronously("madplay /mnt/sda1/"+String(x)+""+String(y)+"x.mp3");
+    }
+    else {
+      p.runShellCommandAsynchronously("/usr/bin/killall -9 madplay");
+      if(x < 3) x++;
+      else y++;
+      if(y>3) y = 3;
+    }
+    counter++;
+    if(counter > 100) {
+      start = !start;
+      counter = 0;
+    }
+
+    //while(p.running());
   //}
 //  while(p.running()){
 //    micValue = analogRead(micPin);
